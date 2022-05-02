@@ -7,3 +7,7 @@ Deberá implementarse la funcionalidad básica de una tienda de productos:
 - La aplicación tendrá que implementar el manejo de excepciones correctamente.
 - Deberá diseñarse un Diagrama de Entidad Relación para la solución.
 - Deberá ejecutarse por consola y se almacenarán los datos en memoria.
+
+## Diagrama Entidad Relación
+![Image text](https://github.com/juamlosada/challenge-besysoft/blob/master/entity-relationship-diagram.png)
+

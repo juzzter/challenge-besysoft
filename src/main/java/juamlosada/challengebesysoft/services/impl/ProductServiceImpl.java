@@ -2,7 +2,6 @@ package juamlosada.challengebesysoft.services.impl;
 
 import juamlosada.challengebesysoft.configuration.exception.notfound.ProductNotFoundException;
 import juamlosada.challengebesysoft.entities.Product;
-import juamlosada.challengebesysoft.repositories.CategoryRepository;
 import juamlosada.challengebesysoft.repositories.ProductRepository;
 import juamlosada.challengebesysoft.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @Override
     public Product getById(Long id) {
@@ -46,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
         prod.setName(product.getName());
         prod.setPrice(product.getPrice());
         prod.setCategory(product.getCategory());
+        prod.setSales(product.getSales());
 
         return productRepository.save(prod);
     }

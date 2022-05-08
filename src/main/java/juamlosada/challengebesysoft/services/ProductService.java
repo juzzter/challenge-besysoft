@@ -18,4 +18,9 @@ public interface ProductService {
 
     public List<Product> findAll();
 
+    List<Product> findByCategoryId(Long id);
+
+    List<Product> findByPrice(Double price);
+
+    Object findByStock(Integer stock);
 }

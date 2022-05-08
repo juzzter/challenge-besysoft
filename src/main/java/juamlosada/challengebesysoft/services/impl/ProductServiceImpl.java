@@ -87,4 +87,25 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
+    @Override
+    public List<Product> findByCategoryId(Long id) {
+
+        if (!categoryRepository.existsById(id)) {
+            throw new CategoryNotFoundException(id);
+        }
+
+        return productRepository.findByCategoryId(id);
+    }
+
+    @Override
+    public List<Product> findByPrice(Double price) {
+        return productRepository.findByPrice(price);
+    }
+
+    @Override
+    public List<Product> findByStock(Integer stock) {
+        return productRepository.findByStock(stock);
+    }
+
+
 }

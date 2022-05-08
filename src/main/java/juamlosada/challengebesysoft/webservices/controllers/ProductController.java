@@ -71,4 +71,29 @@ public class ProductController {
             return new ResponseEntity<>("Product not found with id: " + id, HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<?> findByCategoryId(@PathVariable Long id) {
+        try {
+            return new ResponseEntity<>(ProductListDto.valueOf(productService.findByCategoryId(id)), HttpStatus.OK);
+        } catch (CategoryNotFoundException e) {
+            return new ResponseEntity<>("Category not found with id: " + id, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/price/{price}")
+    public ResponseEntity<?> findByPrice(@PathVariable Double price) {
+        return new ResponseEntity<>(productService.findByPrice(price), HttpStatus.OK);
+    }
+
+    @GetMapping("/stock/{stock}")
+    public ResponseEntity<?> findByStock(@PathVariable Integer stock) {
+        return new ResponseEntity<>(productService.findByStock(stock), HttpStatus.OK);
+    }
+
+    @GetMapping("/not-stock")
+    public ResponseEntity<?> findByNotStock() {
+        return new ResponseEntity<>(productService.findByStock(0), HttpStatus.OK);
+    }
+
 }

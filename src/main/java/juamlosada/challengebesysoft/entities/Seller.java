@@ -8,6 +8,7 @@ public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true, nullable = false)
     private String name;
     private Double salary;
 
@@ -36,6 +37,14 @@ public class Seller {
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
     }
 
 }

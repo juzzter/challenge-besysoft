@@ -1,5 +1,7 @@
 package juamlosada.challengebesysoft.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,12 +11,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String name;
 
     private Double price;
 
     private Integer stock;
     @ManyToOne
+    @JsonIgnoreProperties("products")
     private Category category;
 
     @OneToMany(mappedBy = "product")

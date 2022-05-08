@@ -1,5 +1,7 @@
 package juamlosada.challengebesysoft.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +15,12 @@ public class Sale {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @JsonIgnoreProperties("sales")
     private Product product;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
+    @JsonIgnoreProperties("sales")
     private Seller seller;
 
     public Long getId() {

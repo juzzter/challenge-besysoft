@@ -35,9 +35,8 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Category category){
         try {
-            return new ResponseEntity<>(categoryService.save(category), HttpStatus.OK);
-        }
-        catch (DuplicateCategoryException e) {
+            return new ResponseEntity<>(categoryService.save(category), HttpStatus.CREATED);
+        } catch (DuplicateCategoryException e) {
             return new ResponseEntity<>("Category already exists with name: " + category.getName(), HttpStatus.CONFLICT);
         }
 

@@ -18,4 +18,5 @@ public interface SellerService {
 
     public List<Seller> findAll();
 
+    Double getCommision(Long id);
 }

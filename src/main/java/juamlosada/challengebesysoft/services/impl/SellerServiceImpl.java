@@ -2,6 +2,7 @@ package juamlosada.challengebesysoft.services.impl;
 
 import juamlosada.challengebesysoft.configuration.exception.duplicateentry.DuplicateSellerException;
 import juamlosada.challengebesysoft.configuration.exception.notfound.SellerNotFoundException;
+import juamlosada.challengebesysoft.entities.Sale;
 import juamlosada.challengebesysoft.entities.Seller;
 import juamlosada.challengebesysoft.repositories.SellerRepository;
 import juamlosada.challengebesysoft.services.SellerService;
@@ -62,5 +63,30 @@ public class SellerServiceImpl implements SellerService {
     @Override
     public List<Seller> findAll() {
         return sellerRepository.findAll();
+    }
+
+    @Override
+    public Double getCommision(Long id) {
+        if (!sellerRepository.existsById(id)) {
+            throw new SellerNotFoundException(id);
+        }
+
+        int soldProducts = 0;
+        double totalSales = (double) 0;
+
+        for (Sale sale : sellerRepository.findById(id).get().getSales()) {
+            soldProducts += sale.getQuantity();
+            totalSales += sale.getProduct().getPrice() * sale.getQuantity();
+        }
+
+        double commision = (double) 0;
+
+        if (soldProducts <= 2) {
+            commision = totalSales * 0.05;
+        }else {
+            commision = totalSales * 0.1;
+        }
+
+        return commision;
     }
 }

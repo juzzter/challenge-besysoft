@@ -60,4 +60,13 @@ public class SellerController {
             return new ResponseEntity<>("Seller not found with id: " + id, HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/commission/{id}")
+    public ResponseEntity<?> getCommision(@PathVariable Long id) {
+        try {
+            return new ResponseEntity<>(sellerService.getCommision(id), HttpStatus.OK);
+        } catch (SellerNotFoundException e) {
+            return new ResponseEntity<>("Seller not found with id: " + id, HttpStatus.NOT_FOUND);
+        }
+    }
 }

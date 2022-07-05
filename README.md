@@ -1,4 +1,4 @@
-# Java challenge Besysoft
+# Java challenge
 Deberá implementarse la funcionalidad básica de una tienda de productos:
 - Se podrán almacenar productos (código, nombre, precio, categoría), vendedor (código, nombre, sueldo).
 - Al registrar una venta, se tendrá que relacionar el producto con el vendedor que realizo la venta.
